@@ -3,7 +3,7 @@ import '../App.css';
 
 class ListPointsBlock extends Component {
 
-  onRemoveHandler = id => {
+  onRemoveHandler = (id, coor)=> {
     console.log("remove ", id);
     this.props.removePoint(id);
   };
@@ -11,10 +11,10 @@ class ListPointsBlock extends Component {
   render() {
     const points = this.props.points.map((point, indx) => (
       <h3 key={indx} id={point.id}>
-        {point.point} 
+        {point.point}
         <button
           onClick={() => {
-            this.onRemoveHandler(point.id);
+            this.onRemoveHandler(point.id, point.coor);
           }}
         >
           remove

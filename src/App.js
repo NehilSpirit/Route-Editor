@@ -6,30 +6,24 @@ import ListPointsBlock from './components/ListPointsBlock';
 
 
 
+
 class App extends Component {
 constructor(props) {
   super(props)
+  console.log(props)
   this.state = {
   points: []
   }
 }
 
-/*onChangeHandle = (evt) => {
-  let value = evt.target.value;
-  console.log(value);
-  if (evt.keyCode === keyCode) {
-      //this.props.points.push(value);
-      //this.setState({ points: this.createPoints()});
-      this.setState({ arrayPoints: this.state.arrayPoints.push(value)});
-      console.log(this.state.arrayPoints)
-  }
-} */
+
 
 removePoint = id => {
   const points = [...this.state.points];
   const indx = points.findIndex(el => el.id === id);
   points.splice(indx, 1);
   this.setState({ points });
+  console.log('remove', points)
 };
 
 addPoint = (coor, point) => {
@@ -49,8 +43,7 @@ addPoint = (coor, point) => {
         <EditorBlock  addPoint = {this.addPoint}/>
         <ListPointsBlock points={points} removePoint = {this.removePoint}/>
         </section>
-        <MapBlock points={points}/>
-        
+        <MapBlock  routes = {points}/>
       </div>
     );
   }
